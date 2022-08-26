@@ -11,9 +11,6 @@ server:
 	$(PORT_CMD)  \
 	--rm \
 	--name "zk-server" \
-	-e ZK_timeTick=2000 \
-	-e ZK_dataDir=/var/lib/zookeeper \
-	-e ZK_clientPort=$(CLIENT_PORT) \
 	vpemfh7/zookeeper \
 	zkServer.sh start-foreground
 
@@ -22,9 +19,6 @@ cli:
 	-it \
 	--rm \
 	--name "zk-cli" \
-	-e ZK_timeTick=2000 \
-	-e ZK_dataDir=/var/lib/zookeeper \
-	-e ZK_clientPort=$(CLIENT_PORT) \
 	vpemfh7/zookeeper \
 	zkCli.sh -server $(shell docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' zk-server)
 

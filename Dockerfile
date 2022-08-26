@@ -3,6 +3,9 @@ FROM debian
 ENV ZK_VER 3.8.0
 ENV FILE apache-zookeeper-${ZK_VER}-bin.tar.gz
 ENV ZK_DIR /zookeeper
+ENV ZK_dataDir /var/lib/zookeeper
+ENV ZK_timeTick 2000
+ENV ZK_clientPort 2181
 
 RUN apt update -y \
     && apt install openjdk-11-jdk gpg wget python3 -y
